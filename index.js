@@ -1,18 +1,6 @@
 import { apiKey } from "./config.js";
 import { debounce } from "./utils.js";
 
-{/* <div class="dropdown is-active">
-        <input />
-        <div class="dropdown-menu">
-          <div class="dropdown-content">
-            <a class="dropdown-item">Movie 1</a>
-            <a class="dropdown-item">Movie 2</a>
-            <a class="dropdown-item">Movie 3</a>
-          </div>
-        </div>
-      </div>
-      <div class="target"></div> */}
-
 const root = document.querySelector('.autocomplete');
 root.innerHTML = `
     <label><b>Search for a movie</b></label>
@@ -63,3 +51,9 @@ const fetchData = async (input) => {
     }
     return res.data.Search;
 };
+
+document.addEventListener('click', event => {
+    if (!root.contains(event.target)) {
+        dropdown.classList.remove('is-active');
+    }
+}); 
