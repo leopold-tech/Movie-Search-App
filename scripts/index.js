@@ -3,7 +3,6 @@ import { onMovieSelect } from "./fetchData.js";
 
 
 // Fetches data from API
-// fetchData(input);
 // onMovieSelect(movie);
 
 // Autocomplete widget to search results
@@ -21,10 +20,21 @@ createAutoSearch({
     }, 
     inputValue(movie) {
         return movie.Title;
+    }, 
+    async fetchData(input) {
+        const res = await axios.get('http://www.omdbapi.com/', {
+            params: {
+                apikey: apiKey,
+                s: input
+            }
+        });
+    
+        if (res.data.Error) {
+            return [];
+        }
+        return res.data.Search;
     }
 });
-
-// onOptionSelect(movie) doesn't work
 
 // Feeds HTML template to DOM
 // movieTemplate;
