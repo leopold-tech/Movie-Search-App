@@ -16,7 +16,7 @@ const autoSearchConfig = {
     `;
     },
     inputValue(movie) {
-        return movie.Title;
+        return `${movie.Title} (${movie.Year})`;
     }, 
     async fetchData(input) {
         const res = await axios.get('http://www.omdbapi.com/', {
@@ -52,9 +52,25 @@ createAutoSearch({
     }
 });
 
-function compareSummary() {
+export function compareSummary() {
+    const leftSummaryStats = document.querySelectorAll('#left-summary .notification');
+    const rightSummaryStats = document.querySelectorAll('#right-summary .notification');
 
-}
+    leftSummaryStats.forEach((leftStat, index) => {
+        const rightStat = rightSummaryStats[index];
+
+        const rightStatValue = parseInt(rightStat.dataset.value);
+        const leftStatValue = parseInt(leftStat.dataset.value);
+
+        if (leftStatValue > rightStatValue) {
+            rightStat.classList.remove('is-primary');
+            rightStat.classList.add('is-danger');
+        } else {
+            leftStat.classList.remove('is-primary');
+            leftStat.classList.add('is-danger');
+        }
+    });
+};
 // Feeds HTML template to DOM
 // movieTemplate;
 
