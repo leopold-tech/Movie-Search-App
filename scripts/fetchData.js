@@ -1,7 +1,7 @@
 import { apiKey } from "./config.js";
 import { movieTemplate } from "./movieTemplate.js";
 
-export async function onMovieSelect(movie) {
+export async function onMovieSelect(movie, summary) {
     const movieDetails = await axios.get('http://www.omdbapi.com/', {
         params: {
             apikey: apiKey,
@@ -10,5 +10,5 @@ export async function onMovieSelect(movie) {
     });
     console.log(movieDetails.data);
 
-    document.querySelector('.summary').innerHTML = movieTemplate(movieDetails.data);
+    summary.innerHTML = movieTemplate(movieDetails.data);
 };

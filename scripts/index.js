@@ -15,9 +15,6 @@ const autoSearchConfig = {
         ${movie.Title} (${movie.Year})
     `;
     },
-    onOptionSelect(movie) {
-        onMovieSelect(movie);
-    }, 
     inputValue(movie) {
         return movie.Title;
     }, 
@@ -39,12 +36,20 @@ const autoSearchConfig = {
 // Autocomplete widget to search results
 createAutoSearch({
     ...autoSearchConfig, 
-    root: document.querySelector('#left-autocomplete')
+    root: document.querySelector('#left-autocomplete'),
+    onOptionSelect(movie) {
+        document.querySelector('.tutorial').classList.add('is-hidden');
+        onMovieSelect(movie, document.querySelector('#left-summary'));
+    }
 });
 
 createAutoSearch({
     ...autoSearchConfig, 
-    root: document.querySelector('#right-autocomplete')
+    root: document.querySelector('#right-autocomplete'),
+    onOptionSelect(movie) {
+        document.querySelector('.tutorial').classList.add('is-hidden');
+        onMovieSelect(movie, document.querySelector('#right-summary'));
+    }
 });
 
 // Feeds HTML template to DOM
