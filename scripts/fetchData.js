@@ -1,5 +1,6 @@
 import { apiKey } from "./config.js";
 import { movieTemplate } from "./movieTemplate.js";
+import { compareSummary } from "./index.js";
 
 let leftMovie;
 let rightMovie;
