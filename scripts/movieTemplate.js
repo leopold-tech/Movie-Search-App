@@ -24,15 +24,12 @@ export const movieTemplate = (detail) => {
             <div class="media-content">
                 <div class="content">
                     <h1>${detail.Title}</h1>
-                    <h4>${detail.Genre}</h4>
+                    <h4>${detail.Actors}</h4>
+                    <h6>${detail.Genre}</h6>
                     <p>${detail.Plot}</p>
                 </div>
             </div>
-        </article>
-        <article class="notification is-primary">
-            <p class="title">${detail.Actors}</p>
-            <p class="subtitle">Starring</p>
-        </article>
+        </article>        
         <article data-value=${awards} class="notification is-primary">
             <p class="title">${detail.Awards}</p>
             <p class="subtitle">Awards</p>
