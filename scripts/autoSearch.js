@@ -3,7 +3,7 @@ import { fetchData, onMovieSelect } from "./fetchData.js";
 
 //const root = document.querySelector('.autocomplete');
 
-export const createAutoSearch = ({ root }) => {
+export const createAutoSearch = ({ root, renderOption, onOptionSelect }) => {
     root.innerHTML = `
         <label><b>Search for a movie</b></label>
         <input class="input" />
@@ -34,19 +34,14 @@ export const createAutoSearch = ({ root }) => {
 
         for (let movie of movieList) {
             const resultsOption = document.createElement('a');
-            const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster;
-
+        
             resultsOption.classList.add('dropdown-item');
-            resultsOption.innerHTML = `
-                <img src="${imgSrc}"/>
-                <h3>${movie.Title} </h3>
-                <p> (${movie.Year})</p>
-            `;
+            resultsOption.innerHTML = renderOption(movie);
 
             resultsOption.addEventListener('click', () => {
                 input.value = movie.Title;
                 dropdown.classList.remove('is-active');
-                onMovieSelect(movie);
+                onOptionSelect(movie);
             });
 
             resultsList.appendChild(resultsOption);

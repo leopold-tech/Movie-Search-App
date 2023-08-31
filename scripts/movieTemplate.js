@@ -15,6 +15,10 @@ export const movieTemplate = (detail) => {
             </div>
         </article>
         <article class="notification is-primary">
+            <p class="title">${detail.Actors}</p>
+            <p class="subtitle">Starring</p>
+        </article>
+        <article class="notification is-primary">
             <p class="title">${detail.Awards}</p>
             <p class="subtitle">Awards</p>
         </article>
