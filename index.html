@@ -11,8 +11,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="utils.js" type="module" defer></script>
-    <script src="index.js" type="module" defer></script>
+    <script src="scripts/index.js" type="module" defer></script>
+    <script src="scripts/movieTemplate.js" type="module" defer></script>
+    <script src="scripts/fetchData.js" type="module" defer></script>
+    <script src="scripts/utils.js" type="module" defer></script>
+    <script src="scripts/autoSearch.js" type="module" defer></script>
   </head>
   <body>
     <section class="hero is-primary is-bold">
@@ -28,9 +31,8 @@
       </div>
     </section>
     <div class="container">
-      <div class="autocomplete">
-        
-      </div>
+      <div class="autocomplete"></div>
+      <div class="summary"></div>
     </div>
   </body>
 </html>
