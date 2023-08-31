@@ -1,4 +1,6 @@
 import { createAutoSearch } from "./autoSearch.js";
+import { onMovieSelect } from "./fetchData.js";
+
 
 // Fetches data from API
 // fetchData(input);
@@ -16,8 +18,13 @@ createAutoSearch({
     },
     onOptionSelect(movie) {
         onMovieSelect(movie);
+    }, 
+    inputValue(movie) {
+        return movie.Title;
     }
 });
+
+// onOptionSelect(movie) doesn't work
 
 // Feeds HTML template to DOM
 // movieTemplate;
