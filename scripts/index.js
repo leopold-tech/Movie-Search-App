@@ -1,4 +1,5 @@
 import { createAutoSearch } from "./autoSearch.js";
+import { apiKey } from "./config.js";
 import { onMovieSelect } from "./fetchData.js";
 
 
@@ -7,7 +8,7 @@ import { onMovieSelect } from "./fetchData.js";
 
 // Autocomplete widget to search results
 createAutoSearch({
-    root: document.querySelector('.autocomplete'), 
+    root: document.querySelector('#left-autocomplete'), 
     renderOption(movie) {                           //renders autosearch options
         const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster;
         return `
@@ -36,5 +37,36 @@ createAutoSearch({
     }
 });
 
+createAutoSearch({
+    root: document.querySelector('#right-autocomplete'), 
+    renderOption(movie) {                           //renders autosearch options
+        const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster;
+        return `
+        <img src="${imgSrc}"/>
+        ${movie.Title} (${movie.Year})
+    `;
+    },
+    onOptionSelect(movie) {
+        onMovieSelect(movie);
+    }, 
+    inputValue(movie) {
+        return movie.Title;
+    }, 
+    async fetchData(input) {
+        const res = await axios.get('http://www.omdbapi.com/', {
+            params: {
+                apikey: apiKey,
+                s: input
+            }
+        });
+    
+        if (res.data.Error) {
+            return [];
+        }
+        return res.data.Search;
+    }
+});
 // Feeds HTML template to DOM
 // movieTemplate;
+
+
