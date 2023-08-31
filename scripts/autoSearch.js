@@ -1,11 +1,10 @@
 import { debounce } from "./utils.js";
-import { fetchData, onMovieSelect } from "./fetchData.js";
 
 //const root = document.querySelector('.autocomplete');
 
-export const createAutoSearch = ({ root, renderOption, onOptionSelect, inputValue }) => {
+export const createAutoSearch = ({ root, renderOption, onOptionSelect, inputValue, fetchData }) => {
     root.innerHTML = `
-        <label><b>Search for a movie</b></label>
+        <label><b>Type in to search</b></label>
         <input class="input" />
         <div class="dropdown">
             <div class="dropdown-menu">
@@ -20,11 +19,11 @@ export const createAutoSearch = ({ root, renderOption, onOptionSelect, inputValu
 
     // Uses input to show data from API in dropdown menu
     const onInput = async (e) => {
-        const movieList = await fetchData(e.target.value);
-        console.log(movieList);
+        const itemList = await fetchData(e.target.value);
+        console.log(itemList);
 
-        // Remove dropdown & end process if movieList.length = 0
-        if (!movieList.length) {
+        // Remove dropdown & end process if itemList.length = 0
+        if (!itemList.length) {
             dropdown.classList.remove('is-active');
             return;
         }
@@ -32,16 +31,16 @@ export const createAutoSearch = ({ root, renderOption, onOptionSelect, inputValu
         resultsList.innerHTML = '';
         dropdown.classList.add('is-active');
 
-        for (let movie of movieList) {
+        for (let item of itemList) {
             const resultsOption = document.createElement('a');
         
             resultsOption.classList.add('dropdown-item');
-            resultsOption.innerHTML = renderOption(movie);
+            resultsOption.innerHTML = renderOption(item);
 
             resultsOption.addEventListener('click', () => {
-                input.value = inputValue(movie);
+                input.value = inputValue(item);
                 dropdown.classList.remove('is-active');
-                onOptionSelect(movie);
+                onOptionSelect(item);
             });
 
             resultsList.appendChild(resultsOption);
