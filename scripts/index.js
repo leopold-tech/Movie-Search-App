@@ -1,6 +1,6 @@
-import { createAutoSearch } from "./scripts/autoSearch.js";
-import { apiKey } from "./scripts/config.js";
-import { onMovieSelect } from "./scripts/fetchData.js";
+import { createAutoSearch } from "../scripts/autoSearch.js";
+import { apiKey } from "../scripts/config.js";
+import { onMovieSelect } from "../scripts/fetchData.js";
 
 // Fetches data from API
 // onMovieSelect(movie);

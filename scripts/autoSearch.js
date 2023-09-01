@@ -1,4 +1,4 @@
-import { debounce } from "./scripts/utils.js";
+import { debounce } from "../scripts/utils.js";
 
 export const createAutoSearch = ({ root, renderOption, onOptionSelect, inputValue, fetchData }) => {
     root.innerHTML = `
