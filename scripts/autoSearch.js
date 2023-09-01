@@ -1,6 +1,4 @@
-import { debounce } from "./utils.js";
-
-//const root = document.querySelector('.autocomplete');
+import { debounce } from "./scripts/utils.js";
 
 export const createAutoSearch = ({ root, renderOption, onOptionSelect, inputValue, fetchData }) => {
     root.innerHTML = `

@@ -1,6 +1,6 @@
-import { createAutoSearch } from "./autoSearch.js";
-import { apiKey } from "./config.js";
-import { onMovieSelect } from "./fetchData.js";
+import { createAutoSearch } from "./scripts/autoSearch.js";
+import { apiKey } from "./scripts/config.js";
+import { onMovieSelect } from "./scripts/fetchData.js";
 
 // Fetches data from API
 // onMovieSelect(movie);
@@ -73,4 +73,3 @@ export function compareSummary() {
 };
 // Feeds HTML template to DOM
 // movieTemplate;
-

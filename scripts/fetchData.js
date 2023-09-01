@@ -1,6 +1,6 @@
-import { apiKey } from "./config.js";
-import { movieTemplate } from "./movieTemplate.js";
-import { compareSummary } from "./index.js";
+import { apiKey } from "./scripts/config.js";
+import { movieTemplate } from "./scripts/movieTemplate.js";
+import { compareSummary } from "./scripts/index.js";
 
 let leftMovie;
 let rightMovie;
