@@ -11,7 +11,6 @@ export async function onMovieSelect(movie, summary, side) {
             i: movie.imdbID
         }
     });
-    console.log(movieDetails.data);
 
     summary.innerHTML = movieTemplate(movieDetails.data);
 

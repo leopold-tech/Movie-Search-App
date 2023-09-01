@@ -20,7 +20,6 @@ export const createAutoSearch = ({ root, renderOption, onOptionSelect, inputValu
     // Uses input to show data from API in dropdown menu
     const onInput = async (e) => {
         const itemList = await fetchData(e.target.value);
-        console.log(itemList);
 
         // Remove dropdown & end process if itemList.length = 0
         if (!itemList.length) {
